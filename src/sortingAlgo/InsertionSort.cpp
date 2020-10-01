@@ -8,32 +8,35 @@ using namespace std;
 //         cout<<a[i]<<" ";
 //     }
 // }
-int* insertionSort(int a[],int n)
+
+void insertionSort(int a[],int n)
 {
     for(int i=1;i<n;i++)
     {
         int value=a[i];
-        int hole=i;
-        while(hole>0 && value<a[hole-1])
+        int hole=i-1;
+        while(hole>=0 && value<a[hole])
         {
-            a[hole]=a[hole-1];
+            a[hole+1]=a[hole];
             hole--;
         }
-        a[hole]=value;
+        a[hole+1]=value;
     }
-     return a;
-    
 }
+
 int main()
 {
-   int a[5];
-    for(int i=0;i<5;i++)
+    int n;
+    cin >> n;
+    int a[n];
+    
+    for(int i=0;i<n;i++)
     {
         cin>>a[i];
     }
-    
-    int *arr=insertionSort(a,5);
-     for(int i=0;i<5;i++)
+    insertionSort(a,n);
+     
+    for(int i=0;i<n;i++)
     {
         cout<<a[i]<<" ";
     }
